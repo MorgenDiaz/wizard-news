@@ -6,7 +6,7 @@ const postsController = require("./controller/postsController");
 const postsView = require("./view/postsView");
 const postView = require("./view/postView");
 const app = express();
-const PORT = 3001;
+const { PORT = 3001 } = process.env;
 
 app.use(morgan("dev"));
 app.use(express.static("public"));
