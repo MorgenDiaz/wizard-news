@@ -1,3 +1,5 @@
+const timeAgo = require("node-time-ago");
+
 const data = [
   {
     id: 1,
@@ -127,13 +129,19 @@ const data = [
   },
 ];
 
+const toModelPost = (post) => {
+  const modelPost = { ...post };
+  modelPost.date = timeAgo(modelPost.date);
+  return modelPost;
+};
+
 const list = () => {
-  return [...data];
+  return [...data].map(toModelPost);
 };
 
 const find = (id) => {
   const post = data.find((post) => post.id === Number(id));
-  return { ...post };
+  return toModelPost({ ...post });
 };
 
 module.exports = { list: list, find: find };
