@@ -7,7 +7,7 @@ function handlePosts(req, res, postBank, render) {
 function handleSinglePost(req, res, postBank, render) {
   const id = req.params.id;
   const post = postBank.find(id);
-  console.log(post);
+
   if (!post.id) {
     throw Error("Uh oh");
   }
